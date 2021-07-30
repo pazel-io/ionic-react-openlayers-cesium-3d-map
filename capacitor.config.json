@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "ionic-react-cesium-3d-map",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}

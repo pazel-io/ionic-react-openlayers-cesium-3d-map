@@ -1,0 +1,7 @@
+{
+  "name": "ionic-react-cesium-3d-map",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
