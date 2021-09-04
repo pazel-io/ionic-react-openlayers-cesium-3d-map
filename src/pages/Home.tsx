@@ -1,25 +1,49 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
+import CesiumControl from '../components/Controls/CesiumControl';
+import { Layers, TileLayer } from '../components/Layers';
+import Map from '../components/Map';
+import mapConfig from '../config.json';
+import React, { useState } from 'react';
+import { osm, satellite } from '../components/Source';
+import { fromLonLat, get } from 'ol/proj';
+import { AttributionControl, Controls, FullScreenControl, ZoomControl } from '../components/Controls';
+
+const MapContainer = () => {
+    const [center, setCenter] = useState(mapConfig.center);
+    const [zoom, setZoom] = useState(12);
+
+    return (
+        <Map center={fromLonLat(center)} zoom={zoom}>
+            <Layers>
+                <TileLayer source={osm()} zIndex={0}/>
+            </Layers>
+            <Controls>
+                {/*<FullScreenControl/>*/}
+                {/*<ZoomControl/>*/}
+                {/*<AttributionControl/>*/}
+                <CesiumControl/>
+            </Controls>
+        </Map>
+    );
+};
 
 const Home: React.FC = () => {
-  return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Blank</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer />
-      </IonContent>
-    </IonPage>
-  );
+    let [showMap, setShowMap] = useState(false);
+
+    setTimeout(() => setShowMap(true), 100);
+    return (
+        <IonPage>
+            <IonHeader>
+                <IonToolbar>
+                    <IonTitle>Ionic - 3D map</IonTitle>
+                </IonToolbar>
+            </IonHeader>
+            <IonContent fullscreen scrollY={false}>
+                {showMap && <MapContainer/>}
+            </IonContent>
+        </IonPage>
+    );
 };
 
 export default Home;
