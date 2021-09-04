@@ -1,13 +1,12 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import './Home.css';
-import CesiumControl from '../components/Controls/CesiumControl';
 import { Layers, TileLayer } from '../components/Layers';
 import Map from '../components/Map';
 import mapConfig from '../config.json';
 import React, { useState } from 'react';
 import { osm, satellite } from '../components/Source';
 import { fromLonLat, get } from 'ol/proj';
-import { AttributionControl, Controls, FullScreenControl, ZoomControl } from '../components/Controls';
+import { Controls, CesiumControl, FullScreenControl } from '../components/Controls';
 
 const MapContainer = () => {
     const [center, setCenter] = useState(mapConfig.center);
@@ -19,9 +18,7 @@ const MapContainer = () => {
                 <TileLayer source={osm()} zIndex={0}/>
             </Layers>
             <Controls>
-                {/*<FullScreenControl/>*/}
-                {/*<ZoomControl/>*/}
-                {/*<AttributionControl/>*/}
+                <FullScreenControl/>
                 <CesiumControl/>
             </Controls>
         </Map>

@@ -4,16 +4,38 @@
     height: 100%;
 }
 
+.ol-overlaycontainer-stopevent {
+    z-index: 10000 !important;
+}
+
 .ol-control {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.ol-control button {
+    padding: 10px;
     border-radius: 4px;
-    padding: 2px;
+    margin-left: 5px;
 }
 
 .ol-full-screen {
     top: .5em;
     right: .5em;
+}
+
+.ol-rotate {
+    top: 3em;
+    right: .5em;
+}
+
+.ol-attribution {
+    bottom: .5em;
+    left: .5em;
+}
+
+.ol-zoom {
+    top: .5em;
+    left: .5em;
 }
 
 /*.cesium-credit-logoContainer, .cesium-credit-textContainer, .cesium-credit-expand-link {*/
