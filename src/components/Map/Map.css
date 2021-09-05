@@ -14,12 +14,18 @@
 }
 
 .ol-3d {
-    top: 7em;
+    top: 3em;
     right: .5em;
     z-index: 100;
 }
 
-.ol-3d button {
+.plt-mobile .ol-3d {
+    top: 9.5em;
+    right: .5em;
+    z-index: 100;
+}
+
+.plt-mobile .ol-3d button {
     font-size: 1.5em;
 }
 

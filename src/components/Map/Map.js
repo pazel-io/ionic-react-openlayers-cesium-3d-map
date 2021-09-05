@@ -3,7 +3,7 @@ import "./Map.css";
 import MapContext from "./MapContext";
 import * as ol from "ol";
 import {defaults as defaultControls} from "ol/control";
-
+import {defaults} from 'ol/interaction';
 const Map = ({children, zoom, center}) => {
     const mapRef = useRef();
     const [map, setMap] = useState(null);
@@ -20,6 +20,7 @@ const Map = ({children, zoom, center}) => {
                 zoom: true,
                 rotate: true,
             }),
+            interactions: defaults(),
             overlays: []
         };
 
