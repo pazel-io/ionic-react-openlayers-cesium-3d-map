@@ -1,20 +1,29 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import MapContext from "../Map/MapContext";
 import OLCesium from "olcs/OLCesium";
 
 const CesiumControl = () => {
-	const { map } = useContext(MapContext);
+    const {map} = useContext(MapContext);
+    const ol3dRef = useRef();
+    const [cesiumEnabled, setCesiumEnabled] = useState(null);
 
-	useEffect(() => {
-		if (!map) return;
+    const toggle3d = () => {
+        ol3dRef.current.setEnabled(!cesiumEnabled);
+        setCesiumEnabled(!cesiumEnabled);
+    }
 
-		const ol3d = new OLCesium({map: map}); // ol2dMap is the ol.Map instance
-		ol3d.setEnabled(true);
-		window.ol3d = ol3d; // temporary hack for easy console debugging
+    useEffect(() => {
+        if (!map) return;
 
-	}, [map]);
+        ol3dRef.current = new OLCesium({map: map}); // ol2dMap is the ol.Map instance
+        window.ol3d = ol3dRef; // temporary hack for easy console debugging
 
-	return null;
+    }, [map]);
+
+    return <div className="ol-3d ol-unselectable ol-control" onClick={toggle3d}>
+        <button className="ol-full-screen-false" type="button" title="Enable 3D" style={{display: cesiumEnabled ? 'none' : 'block'}}>3D</button>
+        <button className="ol-full-screen-false" type="button" title="Disable 3D" style={{display: !cesiumEnabled ? 'none' : 'block'}}>2D</button>
+    </div>;
 };
 
 export default CesiumControl;
