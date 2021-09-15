@@ -14,7 +14,7 @@
 }
 
 .ol-3d {
-    top: 3em;
+    top: 5.5em;
     right: .5em;
     z-index: 100;
 }
@@ -27,6 +27,10 @@
 
 .plt-mobile .ol-3d button {
     font-size: 1.5em;
+}
+
+.plt-mobile .ol-rotate {
+    top: 4.5em;
 }
 
 /*.cesium-credit-logoContainer, .cesium-credit-textContainer, .cesium-credit-expand-link {*/
